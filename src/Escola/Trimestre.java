@@ -1,49 +1,66 @@
 package Escola;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Trimestre {
 
-	private double note1;
-	private double note2;
-	private double note3;
+	private String name;
+	private List<Double> grades;
+	private Double AVG;
 
-//-------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------
 
-	public Trimestre(double note1, double note2, double note3) {
-		this.note1 = note1;
-		this.note2 = note2;
-		this.note3 = note3;
+	public Trimestre(String name, List<Double> grades) {
+		this.name = name;
+		this.grades = new ArrayList<Double>();
+		setNotas(grades);
 	}
 
-// -------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------
 
-	public double getNote1() {
-		return note1;
+	public String getNome() {
+		return name;
 	}
 
-	public void setNote1(double note1) {
-		this.note1 = note1;
+	public void setNome(String name) {
+		this.name = name;
 	}
 
-	public double getNote2() {
-		return note2;
+	public List<Double> getNotas() {
+		return grades;
 	}
 
-	public void setNote2(double note2) {
-		this.note2 = note2;
+	public void setNotas(List<Double> grades) {
+		this.grades = grades;
 	}
 
-	public double getNote3() {
-		return note3;
+	public Double getAVG() {
+		return AVG;
 	}
 
-	public void setNote3(double note3) {
-		this.note3 = note3;
+	public void setAVG(Double AVG) {
+		this.AVG = AVG;
 	}
 
-//-------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------
 
-	public double avg() {
-		return (note1 + note2 + note3) / 3;
+	public void calculateTheAVG() {
+		Double Calculation = 0.0;
 
+		for (Double nota : grades) {
+			Calculation += nota;
+		}
+		setAVG(Calculation / this.grades.size());
 	}
+
+	public String toString() {
+		return "Student name: " 
+	            + name 
+	            + "\ngrades: " 
+	            + grades 
+	            + ",\nAVG: " 
+	            + String.format("%.2f", AVG);
+	}
+
 }
